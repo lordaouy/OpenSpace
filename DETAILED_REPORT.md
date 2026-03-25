@@ -184,8 +184,8 @@ The Skill Evolution Engine is OpenSpace's differentiating technology. It impleme
 
 | Type | Trigger | Behavior | Parent Relationship |
 |------|---------|----------|---------------------|
-| **FIX** | Skill execution failure | Repairs broken instructions in-place; preserves content snapshot of previous version | Exactly 1 parent (previous version) |
-| **DERIVED** | Successful pattern worth generalizing | Creates new skill by enhancing or composing existing skills; new directory | 1+ parents (supports composition) |
+| **FIX** | Skill execution failure | Repairs broken instructions in-place; preserves a content snapshot of the previous version (pre-fix state) for rollback capability | Exactly 1 parent (previous version) |
+| **DERIVED** | Successful pattern worth generalizing | Creates new skill in a new directory (sanitized skill name as directory name, max 50 chars, lowercase with hyphens) by enhancing or composing existing skills | 1+ parents (supports composition) |
 | **CAPTURED** | Novel reusable pattern from execution | Creates brand-new skill from successful execution workflows; root node in evolution DAG | No parent (generation 0) |
 
 #### 4.1.2 Evolution Triggers
@@ -272,7 +272,7 @@ Task Received
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `max_iterations` | 30 (configurable, default 20) | Maximum reasoning-action cycles per task |
+| `max_iterations` | 20 (default); overridden to 30 in benchmark config | Maximum reasoning-action cycles per task |
 | `visual_analysis_timeout` | 60.0 seconds | Timeout for screenshot-based analysis |
 | `backend_scope` | `["shell", "mcp", "system"]` | Enabled execution backends |
 
